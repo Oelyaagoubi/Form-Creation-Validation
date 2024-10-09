@@ -15,28 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if(username.length < 3 ){
             isValid = false;
             messages.push('username cant be less than 3 caracters'); 
-        }else if(!/@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)){
+        }
+        if(!/@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)){
             isValid = false;
             messages.push('incorrect email'); 
         }
-        else if(password.length >= 8 ){
+        if(password.length >= 8 ){
             isValid = false;
             messages.push('password must be more than 8 caracters'); 
-        }else{
-            document.getElementById('form-feedback').style.display = 'block';
-            if(isValid){
-               document.getElementById('form-feedback').textContent ="Registration successful!";
-               document.getElementById('form-feedback').style.color = "#28a745";
-            }else if (!isValid){
-               document.getElementById('form-feedback').innerHTML.join('<br>');
-               document.getElementById('form-feedback').style.color = "#dc3545";
-            }
         }
+       const feedbackDev = document.getElementById('form-feedback');
        
-      
+       feedbackDev.style.display = 'block';
+         if(isValid){
+            feedbackDev.textContent ="Registration successful!";
+            feedbackDev.style.color = "#28a745";
+         }else if (!isValid){
+            feedbackDev.innerHTML.join('<br>');
+            feedbackDev.style.color = "#dc3545";
+         }
+       
 
-    })
+    });
 });
-
-   
-   
