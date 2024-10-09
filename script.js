@@ -24,15 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
             messages.push('password must be more than 8 caracters'); 
         }
-       const feedbackDev = document.getElementById('form-feedback');
-       function showfwwdback(){
-         feedbackDev.style.display = 'block';
+       
+       function showfeedback(){
+        document.getElementById('form-feedback').style.display = 'block';
          if(isValid){
-            feedbackDev.textContent ="Registration successful!";
-            feedbackDev.style.color = "#28a745";
+            document.getElementById('form-feedback').textContent ="Registration successful!";
+            document.getElementById('form-feedback').style.color = "#28a745";
          }else if (!isValid){
-            feedbackDev.innerHTML.join('<br>');
-            feedbackDev.style.color = "#dc3545";
+            document.getElementById('form-feedback').innerHTML.join('<br>');
+            document.getElementById('form-feedback').style.color = "#dc3545";
          }
        }
 
