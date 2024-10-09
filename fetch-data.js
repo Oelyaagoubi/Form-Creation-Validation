@@ -3,7 +3,7 @@ async function fetchUserData() {
     const dataContainer = document.getElementById('api-data');
     try{
         const response = await fetch(apiUrl);
-        const users = response.jason();
+        const users = response.json();
         dataContainer.innerHTML = '';
         const userList = document.createElement('ul');
         users.forEach(user => {
