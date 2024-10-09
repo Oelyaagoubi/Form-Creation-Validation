@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('registration-form');
-    const feedbackDev = document.getElementById('form-feedback');
+    const feedbackDiv = document.getElementById('form-feedback');
 
-    form.removeEventListener('submit', function(event){
-        event.preventDefault();
+    form.addEventListener('submit', function(event){
+        
 
         const username = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -16,15 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
             isValid = false;
             messages.push('username cant be less than 3 caracters'); 
         }
-        if(!/@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)){
+        if(!email.includes('@') || !email.includes('.')){
             isValid = false;
             messages.push('incorrect email'); 
         }
-        if(password.length >= 8 ){
+        if(password.length <= 8 ){
             isValid = false;
             messages.push('password must be more than 8 caracters'); 
         }
-       const feedbackDiv = document.getElementById('form-feedback');
        
        feedbackDiv.style.display = 'block';
          if(isValid){
@@ -33,8 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
          }else if (!isValid){
             feedbackDiv.innerHTML = messages.join('<br>');
             feedbackDiv.style.color = "#dc3545";
-         }
+         }  
+         
+         event.preventDefault();
+         });
+
+        
        
 
     });
-});
