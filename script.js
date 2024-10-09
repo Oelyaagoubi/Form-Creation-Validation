@@ -15,27 +15,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if(username.length < 3 ){
             isValid = false;
             messages.push('username cant be less than 3 caracters'); 
-        }
-        if(!/@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)){
+        }else if(!/@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)){
             isValid = false;
             messages.push('incorrect email'); 
         }
-        if(password.length >= 8 ){
+        else if(password.length >= 8 ){
             isValid = false;
             messages.push('password must be more than 8 caracters'); 
+        }else{
+            document.getElementById('form-feedback').style.display = 'block';
+            if(isValid){
+               document.getElementById('form-feedback').textContent ="Registration successful!";
+               document.getElementById('form-feedback').style.color = "#28a745";
+            }else if (!isValid){
+               document.getElementById('form-feedback').innerHTML.join('<br>');
+               document.getElementById('form-feedback').style.color = "#dc3545";
+            }
         }
        
       
 
     })
 });
-function showfeedback(){
-    document.getElementById('form-feedback').style.display = 'block';
-     if(isValid){
-        document.getElementById('form-feedback').textContent ="Registration successful!";
-        document.getElementById('form-feedback').style.color = "#28a745";
-     }else if (!isValid){
-        document.getElementById('form-feedback').innerHTML.join('<br>');
-        document.getElementById('form-feedback').style.color = "#dc3545";
-     }
-   }
+
+   
+   
